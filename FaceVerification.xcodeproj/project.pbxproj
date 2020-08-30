@@ -7,23 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35459D0B24FA9E740092A95F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D0A24FA9E740092A95F /* AppDelegate.swift */; };
-		35459D0D24FA9E740092A95F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D0C24FA9E740092A95F /* SceneDelegate.swift */; };
-		35459D0F24FA9E740092A95F /* FCVRHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D0E24FA9E740092A95F /* FCVRHomeViewController.swift */; };
-		35459D1224FA9E740092A95F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35459D1024FA9E740092A95F /* Main.storyboard */; };
-		35459D1424FA9E760092A95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35459D1324FA9E760092A95F /* Assets.xcassets */; };
-		35459D1724FA9E760092A95F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35459D1524FA9E760092A95F /* LaunchScreen.storyboard */; };
+		35459D2524FAC8AB0092A95F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D2324FAC8AB0092A95F /* SceneDelegate.swift */; };
+		35459D2624FAC8AB0092A95F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D2424FAC8AB0092A95F /* AppDelegate.swift */; };
+		35459D2B24FACA490092A95F /* FCVRHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D2A24FACA490092A95F /* FCVRHomeViewController.swift */; };
+		35459D2D24FACA530092A95F /* FCVRCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D2C24FACA530092A95F /* FCVRCaptureViewController.swift */; };
+		35459D2F24FACA640092A95F /* FCVRReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35459D2E24FACA640092A95F /* FCVRReviewViewController.swift */; };
+		35459D3424FACC220092A95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35459D3224FACC220092A95F /* Assets.xcassets */; };
+		35459D4124FACD540092A95F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35459D3D24FACD540092A95F /* LaunchScreen.storyboard */; };
+		35459D4224FACD540092A95F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35459D3F24FACD540092A95F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		35459D0724FA9E740092A95F /* FaceVerification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceVerification.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		35459D0A24FA9E740092A95F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		35459D0C24FA9E740092A95F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		35459D0E24FA9E740092A95F /* FCVRHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCVRHomeViewController.swift; sourceTree = "<group>"; };
-		35459D1124FA9E740092A95F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		35459D1324FA9E760092A95F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		35459D1624FA9E760092A95F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		35459D1824FA9E760092A95F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35459D2324FAC8AB0092A95F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		35459D2424FAC8AB0092A95F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		35459D2A24FACA490092A95F /* FCVRHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCVRHomeViewController.swift; sourceTree = "<group>"; };
+		35459D2C24FACA530092A95F /* FCVRCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCVRCaptureViewController.swift; sourceTree = "<group>"; };
+		35459D2E24FACA640092A95F /* FCVRReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCVRReviewViewController.swift; sourceTree = "<group>"; };
+		35459D3224FACC220092A95F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35459D3324FACC220092A95F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35459D3E24FACD540092A95F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		35459D4024FACD540092A95F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,65 @@
 		35459D0924FA9E740092A95F /* FaceVerification */ = {
 			isa = PBXGroup;
 			children = (
-				35459D0A24FA9E740092A95F /* AppDelegate.swift */,
-				35459D0C24FA9E740092A95F /* SceneDelegate.swift */,
-				35459D0E24FA9E740092A95F /* FCVRHomeViewController.swift */,
-				35459D1024FA9E740092A95F /* Main.storyboard */,
-				35459D1324FA9E760092A95F /* Assets.xcassets */,
-				35459D1524FA9E760092A95F /* LaunchScreen.storyboard */,
-				35459D1824FA9E760092A95F /* Info.plist */,
+				35459D3124FACB910092A95F /* SupportingFiles */,
+				35459D3024FACB680092A95F /* Storyboards */,
+				35459D2724FAC91A0092A95F /* Home */,
+				35459D2824FAC9390092A95F /* CapturePhoto */,
+				35459D2924FAC94B0092A95F /* ReviewPhoto */,
+				35459D2224FAC8720092A95F /* Delegates */,
 			);
 			path = FaceVerification;
+			sourceTree = "<group>";
+		};
+		35459D2224FAC8720092A95F /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				35459D2424FAC8AB0092A95F /* AppDelegate.swift */,
+				35459D2324FAC8AB0092A95F /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		35459D2724FAC91A0092A95F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				35459D2A24FACA490092A95F /* FCVRHomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		35459D2824FAC9390092A95F /* CapturePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				35459D2C24FACA530092A95F /* FCVRCaptureViewController.swift */,
+			);
+			path = CapturePhoto;
+			sourceTree = "<group>";
+		};
+		35459D2924FAC94B0092A95F /* ReviewPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				35459D2E24FACA640092A95F /* FCVRReviewViewController.swift */,
+			);
+			path = ReviewPhoto;
+			sourceTree = "<group>";
+		};
+		35459D3024FACB680092A95F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				35459D3D24FACD540092A95F /* LaunchScreen.storyboard */,
+				35459D3F24FACD540092A95F /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		35459D3124FACB910092A95F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				35459D3224FACC220092A95F /* Assets.xcassets */,
+				35459D3324FACC220092A95F /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +179,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35459D1724FA9E760092A95F /* LaunchScreen.storyboard in Resources */,
-				35459D1424FA9E760092A95F /* Assets.xcassets in Resources */,
-				35459D1224FA9E740092A95F /* Main.storyboard in Resources */,
+				35459D4124FACD540092A95F /* LaunchScreen.storyboard in Resources */,
+				35459D3424FACC220092A95F /* Assets.xcassets in Resources */,
+				35459D4224FACD540092A95F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,29 +192,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35459D0F24FA9E740092A95F /* FCVRHomeViewController.swift in Sources */,
-				35459D0B24FA9E740092A95F /* AppDelegate.swift in Sources */,
-				35459D0D24FA9E740092A95F /* SceneDelegate.swift in Sources */,
+				35459D2B24FACA490092A95F /* FCVRHomeViewController.swift in Sources */,
+				35459D2F24FACA640092A95F /* FCVRReviewViewController.swift in Sources */,
+				35459D2624FAC8AB0092A95F /* AppDelegate.swift in Sources */,
+				35459D2D24FACA530092A95F /* FCVRCaptureViewController.swift in Sources */,
+				35459D2524FAC8AB0092A95F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		35459D1024FA9E740092A95F /* Main.storyboard */ = {
+		35459D3D24FACD540092A95F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				35459D1124FA9E740092A95F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		35459D1524FA9E760092A95F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35459D1624FA9E760092A95F /* Base */,
+				35459D3E24FACD540092A95F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		35459D3F24FACD540092A95F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35459D4024FACD540092A95F /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -285,7 +341,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FaceVerification/Info.plist;
+				INFOPLIST_FILE = FaceVerification/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FaceVerification/Info.plist;
+				INFOPLIST_FILE = FaceVerification/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
