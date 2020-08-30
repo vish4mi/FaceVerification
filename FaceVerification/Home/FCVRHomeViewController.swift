@@ -8,6 +8,11 @@
 
 import UIKit
 
+let CaptureScreenIdentifier = "captureViewController"
+let ReviewScreenIdentifier = "reviewViewController"
+let CaptureViewController = "captureVCSegue"
+let ReviewViewController = "reviewVCSegue"
+
 class FCVRHomeViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -15,6 +20,9 @@ class FCVRHomeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func startCaptureButtonClicked(_ sender: UIButton) {
+        self.performSegue(withIdentifier: CaptureViewController, sender: self)
+    }
+    
 }
 

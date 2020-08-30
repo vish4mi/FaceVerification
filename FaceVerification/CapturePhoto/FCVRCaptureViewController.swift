@@ -10,21 +10,35 @@ import UIKit
 
 class FCVRCaptureViewController: UIViewController {
 
+    @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var cameraView: UIView!
+    @IBOutlet weak var actionView: UIView!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var captureView: UIView!
+    @IBOutlet weak var captureInfoLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    @IBOutlet weak var actionButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureView()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureView() {
+        self.captureView.layer.cornerRadius = self.captureView.frame.size.width/2
+        self.captureView.layer.borderWidth = 2.0
+        self.captureView.layer.borderColor = UIColor.green.cgColor
+        
+        self.captureView.backgroundColor = .yellow
     }
-    */
+    
+    @IBAction func cancelButtonClicked(_ sender: UIButton) {
+    }
+    
+    @IBAction func actionButtonClicked(_ sender: Any) {
+    }
+    
 
 }
