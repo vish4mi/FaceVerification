@@ -15,6 +15,7 @@
 		35459D3424FACC220092A95F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35459D3224FACC220092A95F /* Assets.xcassets */; };
 		35459D4124FACD540092A95F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35459D3D24FACD540092A95F /* LaunchScreen.storyboard */; };
 		35459D4224FACD540092A95F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35459D3F24FACD540092A95F /* Main.storyboard */; };
+		3551DCC22504DF6F00993FB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3551DCC12504DF6F00993FB7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		35459D3324FACC220092A95F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35459D3E24FACD540092A95F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35459D4024FACD540092A95F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3551DCC12504DF6F00993FB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		35459D0924FA9E740092A95F /* FaceVerification */ = {
 			isa = PBXGroup;
 			children = (
+				3551DCC02504DF4F00993FB7 /* Utilities */,
 				35459D3124FACB910092A95F /* SupportingFiles */,
 				35459D3024FACB680092A95F /* Storyboards */,
 				35459D2724FAC91A0092A95F /* Home */,
@@ -119,6 +122,14 @@
 				35459D3324FACC220092A95F /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		3551DCC02504DF4F00993FB7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3551DCC12504DF6F00993FB7 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				35459D2624FAC8AB0092A95F /* AppDelegate.swift in Sources */,
 				35459D2D24FACA530092A95F /* FCVRCaptureViewController.swift in Sources */,
 				35459D2524FAC8AB0092A95F /* SceneDelegate.swift in Sources */,
+				3551DCC22504DF6F00993FB7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

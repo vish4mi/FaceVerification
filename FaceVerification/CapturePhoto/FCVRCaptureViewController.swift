@@ -33,6 +33,7 @@ class FCVRCaptureViewController: UIViewController {
     
     var rearCamera: AVCaptureDevice?
     var rearCameraInput: AVCaptureDeviceInput?
+    var capturedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,7 @@ class FCVRCaptureViewController: UIViewController {
     }
     
     func configureCaptureView() {
-//        self.captureView.layer.cornerRadius = self.captureView.bounds.width/2
+        self.actionButton.layer.cornerRadius = self.actionButton.bounds.width/2
 //        self.captureView.layer.borderWidth = 2.0
 //        self.captureView.layer.borderColor = UIColor.green.cgColor
 //        
@@ -66,7 +67,7 @@ class FCVRCaptureViewController: UIViewController {
         if #available(iOS 10, *) {
             let photoSettings = AVCapturePhotoSettings()
             photoSettings.isAutoStillImageStabilizationEnabled = true
-            photoSettings.isHighResolutionPhotoEnabled = true
+            //photoSettings.isHighResolutionPhotoEnabled = true
             photoSettings.flashMode = .auto
             
             if let photoOutput = self.photoOutput, photoOutput.isKind(of: AVCapturePhotoOutput.self) {
@@ -78,6 +79,12 @@ class FCVRCaptureViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueName.ReviewViewController {
+            let reviewVC = segue.destination as! FCVRReviewViewController
+            reviewVC.reviewImage = self.capturedImage
+        }
+    }
     
 }
 
@@ -167,11 +174,11 @@ extension FCVRCaptureViewController {
             
             if #available(iOS 10.0, *) {
                 self.photoOutput = AVCapturePhotoOutput()
-                self.photoOutput?.isHighResolutionCaptureEnabled = true
                 self.photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])], completionHandler: nil)
                 if captureSession.canAddOutput(self.photoOutput as! AVCapturePhotoOutput) {
                     captureSession.addOutput(self.photoOutput as! AVCapturePhotoOutput)
                 }
+                
             } else {
                 setupOldCamera()
             }
@@ -245,8 +252,8 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
         // Initialise an UIImage with our image data
         let capturedImage = UIImage.init(data: imageData , scale: 1.0)
         if let image = capturedImage {
-            // Save our captured image to photos album
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            self.capturedImage = image
+            self.performSegue(withIdentifier: SegueName.ReviewViewController, sender: self)
         }
     }
 }

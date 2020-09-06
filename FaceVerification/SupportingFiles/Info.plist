@@ -76,5 +76,7 @@
       <string>$(PRODUCT_NAME) location use</string>
     <key>NSLocationWhenInUseUsageDescription</key>
       <string>$(PRODUCT_NAME) location use</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Our application needs permission to write photos...</string>
 </dict>
 </plist>
