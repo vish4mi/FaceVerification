@@ -32,6 +32,9 @@ class FCVRCaptureViewController: UIViewController {
     private var drawings: [CAShapeLayer] = []
     var capturePhotoOutput: AVCapturePhotoOutput?
     var shouldEnableCapture = false
+    var boundingBox: CGRect?
+    var capturedImage: UIImage?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,18 @@ class FCVRCaptureViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configurePreviewLayer()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueName.ReviewViewController {
+            if let reviewVC = segue.destination as? FCVRReviewViewController {
+                if let image = self.capturedImage, let box = self.boundingBox {
+                    reviewVC.reviewImage = image
+                    reviewVC.boundingBox = box
+                }
+            }
+            
+        }
     }
     
     func configureView() {
@@ -200,9 +215,10 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
         
         // Initialise an UIImage with our image data
         let capturedImage = UIImage.init(data: imageData , scale: 1.0)
-        if let image = capturedImage {
-            // Save our captured image to photos album
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        if let _ = capturedImage, let _ = self.boundingBox {
+            //self.cropImage(with: image, and: box)
+            self.capturedImage = capturedImage
+            self.performSegue(withIdentifier: SegueName.ReviewViewController, sender: self)
         }
     }
     
@@ -213,6 +229,7 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
         if let firstFace = observedFace {
             if firstFace.confidence > 0.5 {
                 shouldEnableCapture = true
+                self.boundingBox = firstFace.boundingBox
             }
         }
         
@@ -223,4 +240,35 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
             self.shouldEnableCapture = shouldEnableCapture
         }
     }
+    
+//    func cropImage(with image: UIImage, and rect: CGRect) {
+//
+//        var personImage = CIImage(image: image)
+//
+//        //let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyLow]
+//        //let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
+//        // This will just take the first detected face but you can do something more sophisticated
+////        guard let face = faceDetector?.features(in: personImage).first as? CIFaceFeature else { return }
+//
+//        // Make the facial rect a square so it will mask nicely to a circle (may not be strictly necessary as `CIFaceFeature` bounds is typically a square)
+//        var aRect = rect
+//        aRect.size.height = max(rect.height, rect.width)
+//        aRect.size.width = max(rect.height, rect.width)
+//        aRect = rect.insetBy(dx: -30, dy: -30) // Adds padding around the face so it's not so tightly cropped
+//
+//        // Crop to the face detected
+//        guard let aPersonImage = personImage else {
+//            return
+//        }
+//        personImage = aPersonImage.cropped(to: aRect)
+//
+//        // Set the new cropped image as the image view image
+//        guard let personCIImage = personImage else {
+//            return
+//        }
+//
+//        let croppedImage = UIImage(ciImage: personCIImage)
+//        // Save our captured image to photos album
+//        UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil)
+//    }
 }
