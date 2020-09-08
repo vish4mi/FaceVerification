@@ -42,7 +42,7 @@ class FCVRReviewViewController: UIViewController {
     
     @IBAction func saveButtonClicked(_ sender: UIButton) {
         // Save our captured image to photos album
-        if let image = reviewImage {
+        if let image = reviewImageView.image {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
     }
