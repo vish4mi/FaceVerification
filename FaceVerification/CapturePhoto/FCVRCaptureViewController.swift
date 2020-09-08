@@ -66,8 +66,7 @@ class FCVRCaptureViewController: UIViewController, AVCaptureVideoDataOutputSampl
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.previewLayer?.frame = self.captureView.bounds
-        self.previewLayer?.cornerRadius = self.captureView.bounds.width/2
+        congigurePreviewFrame()
 
     }
     // Ensure that the interface stays locked in Portrait.
@@ -185,20 +184,24 @@ class FCVRCaptureViewController: UIViewController, AVCaptureVideoDataOutputSampl
         self.previewLayer = videoPreviewLayer
         
         videoPreviewLayer.name = "CameraPreview"
-        videoPreviewLayer.backgroundColor = UIColor.black.cgColor
+        //videoPreviewLayer.backgroundColor = UIColor.black.cgColor
         videoPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         if let previewRootLayer = self.captureView?.layer {
             self.rootLayer = previewRootLayer
             
             previewRootLayer.masksToBounds = true
-            videoPreviewLayer.frame = previewRootLayer.bounds
-            videoPreviewLayer.cornerRadius = self.captureView.bounds.width/2
+            congigurePreviewFrame()
             videoPreviewLayer.borderColor = UIColor.green.cgColor
             videoPreviewLayer.borderWidth = 2.0
             videoPreviewLayer.masksToBounds = true
             previewRootLayer.addSublayer(videoPreviewLayer)
         }
+    }
+    
+    func congigurePreviewFrame() {
+        self.previewLayer?.frame = self.captureView.bounds
+        self.previewLayer?.cornerRadius = self.captureView.bounds.width/2
     }
     
     // Removes infrastructure for AVCapture as part of cleanup.
