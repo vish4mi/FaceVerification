@@ -17,3 +17,17 @@ struct VCIdentifier {
     static let CaptureScreenIdentifier = "captureViewController"
     static let ReviewScreenIdentifier = "reviewViewController"
 }
+
+enum CameraControllerError: Swift.Error {
+    case captureSessionAlreadyRunning
+    case captureSessionIsMissing
+    case inputsAreInvalid
+    case invalidOperation
+    case noCamerasAvailable
+    case unknown
+}
+
+public enum CameraPosition {
+    case front
+    case rear
+}
