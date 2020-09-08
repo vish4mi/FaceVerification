@@ -68,14 +68,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eY-ta-Q5c">
                                 <rect key="frame" x="0.0" y="44" width="414" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-x0-f8x">
-                                        <rect key="frame" x="20" y="10" width="44" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-x0-f8x">
+                                        <rect key="frame" x="30" y="20" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="X">
+                                        <state key="normal" image="CloseButton">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelButtonClicked:" destination="XfD-ss-dxE" eventType="touchUpInside" id="ndj-HT-GxP"/>
+                                            <action selector="cancelButtonClicked:" destination="XfD-ss-dxE" eventType="touchUpInside" id="mDt-Pv-Rzl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -126,7 +126,7 @@
                                         </state>
                                         <state key="disabled" image="CaptureButtonInactive"/>
                                         <connections>
-                                            <action selector="actionButtonClicked:" destination="XfD-ss-dxE" eventType="touchUpInside" id="FRb-AW-zIv"/>
+                                            <action selector="captureButtonClicked:" destination="XfD-ss-dxE" eventType="touchUpInside" id="EVO-9C-bhO"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Powered by abc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvJ-Zj-neN">
@@ -299,5 +299,6 @@
     <resources>
         <image name="CaptureButtonActive" width="56" height="56"/>
         <image name="CaptureButtonInactive" width="56" height="56"/>
+        <image name="CloseButton" width="24" height="24"/>
     </resources>
 </document>
