@@ -40,6 +40,9 @@ class FCVRCaptureViewController: UIViewController {
         super.viewDidLoad()
         self.configureView()
         self.addCameraInput()
+        if self.capturePhotoOutput == nil {
+            self.capturePhotoOutput = self.configurePhotoOutput(for: self.captureSession)
+        }
         self.showCameraFeed()
         self.getCameraFrames()
         self.captureSession.startRunning()
@@ -131,12 +134,12 @@ extension FCVRCaptureViewController: AVCaptureVideoDataOutputSampleBufferDelegat
             
             self.clearDrawings()
             let facesBoundingBoxes: [CAShapeLayer] = observedFaces.flatMap({ (observedFace: VNFaceObservation) -> [CAShapeLayer] in
-                let faceBoundingBoxOnScreen = self.previewLayer.layerRectConverted(fromMetadataOutputRect: observedFace.boundingBox)
+                let faceBoundingBoxOnScreen = self.previewLayer.layerRectConverted(fromMetadataOutputRect: observedFace.boundingBox) as CGRect
                 let faceBoundingBoxPath = CGPath(rect: faceBoundingBoxOnScreen, transform: nil)
                 let faceBoundingBoxShape = CAShapeLayer()
                 faceBoundingBoxShape.path = faceBoundingBoxPath
                 faceBoundingBoxShape.fillColor = UIColor.clear.cgColor
-                faceBoundingBoxShape.strokeColor = UIColor.green.cgColor
+                faceBoundingBoxShape.strokeColor = UIColor.clear.cgColor
                 var newDrawings = [CAShapeLayer]()
                 newDrawings.append(faceBoundingBoxShape)
                 return newDrawings
@@ -155,14 +158,11 @@ extension FCVRCaptureViewController: AVCaptureVideoDataOutputSampleBufferDelegat
 extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func captureButtonClicked(_ sender: UIButton) {
         
-        if self.capturePhotoOutput == nil {
-            self.capturePhotoOutput = self.configurePhotoOutput(for: self.captureSession)
-        }
         guard let capturePhotoOutput = self.capturePhotoOutput else {
             return
         }
@@ -218,6 +218,7 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
         if let _ = capturedImage, let _ = self.boundingBox {
             //self.cropImage(with: image, and: box)
             self.capturedImage = capturedImage
+            //self.cropImage(with: image, and: box)
             self.performSegue(withIdentifier: SegueName.ReviewViewController, sender: self)
         }
     }

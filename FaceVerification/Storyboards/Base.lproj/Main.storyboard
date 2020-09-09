@@ -8,6 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="WeI-eW-nhU">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="b9f-W0-Ydl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="87z-tb-PQc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="649-Hy-AUs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tml-IW-cuu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1075" y="94"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -49,8 +64,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Fh-BM-xM0"/>
                     <connections>
-                        <segue destination="XfD-ss-dxE" kind="presentation" identifier="captureVCSegue" modalPresentationStyle="overFullScreen" id="Uzn-2E-lmR"/>
+                        <segue destination="XfD-ss-dxE" kind="presentation" identifier="captureVCSegue" modalPresentationStyle="fullScreen" id="Uzn-2E-lmR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -173,7 +189,7 @@
                         <outlet property="captureView" destination="BlI-Kj-au5" id="7oW-BQ-Uxu"/>
                         <outlet property="infoLabel" destination="kvJ-Zj-neN" id="SXA-IX-khI"/>
                         <outlet property="topBarView" destination="5eY-ta-Q5c" id="v0V-fc-rkK"/>
-                        <segue destination="jog-cm-pza" kind="show" identifier="reviewVCSegue" id="4kg-Lo-JFc"/>
+                        <segue destination="jog-cm-pza" kind="presentation" identifier="reviewVCSegue" modalPresentationStyle="fullScreen" id="4kg-Lo-JFc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ey1-7U-AXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -185,11 +201,11 @@
             <objects>
                 <viewController id="jog-cm-pza" customClass="FCVRReviewViewController" customModule="FaceVerification" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YUu-5Y-uVn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KqF-ma-Lzz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review your photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C91-sK-qUS">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
@@ -208,10 +224,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02w-Qm-34h">
-                                <rect key="frame" x="0.0" y="64" width="414" height="656"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="666"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-OT-Qs5">
-                                        <rect key="frame" x="41.5" y="162.5" width="331" height="331"/>
+                                        <rect key="frame" x="41.5" y="167.5" width="331" height="331"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GMt-OT-Qs5" secondAttribute="height" multiplier="1:1" id="wk1-zb-UfM"/>
                                         </constraints>
@@ -225,7 +241,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETP-jj-egz">
-                                <rect key="frame" x="0.0" y="720" width="414" height="88"/>
+                                <rect key="frame" x="0.0" y="774" width="414" height="88"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="415-9a-w5T">
                                         <rect key="frame" x="212" y="24" width="182" height="40"/>

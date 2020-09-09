@@ -45,10 +45,11 @@ class FCVRReviewViewController: UIViewController {
         if let image = reviewImageView.image {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     func focusOnFace(in imageView: UIImageView)
