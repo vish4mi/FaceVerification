@@ -17,7 +17,14 @@ class FCVRHomeViewController: UIViewController {
     }
 
     @IBAction func startCaptureButtonClicked(_ sender: UIButton) {
-        self.performSegue(withIdentifier: SegueName.CaptureViewController, sender: self)
+        if #available(iOS 11, *) {
+            self.performSegue(withIdentifier: SegueName.CaptureViewController, sender: self)
+        } else {
+            let alert = UIAlertController.init(title: "Support Issue", message: "Your device does not support this feature, please update your device to iOS version 11 or higher", preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "Ok", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
