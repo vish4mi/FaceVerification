@@ -117,41 +117,41 @@ extension FCVRCaptureViewController: AVCaptureVideoDataOutputSampleBufferDelegat
     }
     
     private func detectFace(in image: CVPixelBuffer) {
-            let faceDetectionRequest = VNDetectFaceLandmarksRequest(completionHandler: { (request: VNRequest, error: Error?) in
-                DispatchQueue.main.async {
-                    if let results = request.results as? [VNFaceObservation] {
-                        self.handleFaceDetectionResults(results)
-                    } else {
-                        self.clearDrawings()
-                    }
+        let faceDetectionRequest = VNDetectFaceLandmarksRequest(completionHandler: { (request: VNRequest, error: Error?) in
+            DispatchQueue.main.async {
+                if let results = request.results as? [VNFaceObservation] {
+                    self.handleFaceDetectionResults(results)
+                } else {
+                    self.clearDrawings()
                 }
-            })
-            let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .leftMirrored, options: [:])
-            try? imageRequestHandler.perform([faceDetectionRequest])
-        }
+            }
+        })
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .leftMirrored, options: [:])
+        try? imageRequestHandler.perform([faceDetectionRequest])
+    }
+    
+    private func handleFaceDetectionResults(_ observedFaces: [VNFaceObservation]) {
         
-        private func handleFaceDetectionResults(_ observedFaces: [VNFaceObservation]) {
-            
-            self.clearDrawings()
-            let facesBoundingBoxes: [CAShapeLayer] = observedFaces.flatMap({ (observedFace: VNFaceObservation) -> [CAShapeLayer] in
-                let faceBoundingBoxOnScreen = self.previewLayer.layerRectConverted(fromMetadataOutputRect: observedFace.boundingBox) as CGRect
-                let faceBoundingBoxPath = CGPath(rect: faceBoundingBoxOnScreen, transform: nil)
-                let faceBoundingBoxShape = CAShapeLayer()
-                faceBoundingBoxShape.path = faceBoundingBoxPath
-                faceBoundingBoxShape.fillColor = UIColor.clear.cgColor
-                faceBoundingBoxShape.strokeColor = UIColor.clear.cgColor
-                var newDrawings = [CAShapeLayer]()
-                newDrawings.append(faceBoundingBoxShape)
-                return newDrawings
-            })
-            facesBoundingBoxes.forEach({ faceBoundingBox in self.captureView.layer.addSublayer(faceBoundingBox) })
-            self.drawings = facesBoundingBoxes
-            self.configureCapture(for: observedFaces)
-        }
-        
-        private func clearDrawings() {
-            self.drawings.forEach({ drawing in drawing.removeFromSuperlayer() })
-        }
+        self.clearDrawings()
+        let facesBoundingBoxes: [CAShapeLayer] = observedFaces.flatMap({ (observedFace: VNFaceObservation) -> [CAShapeLayer] in
+            let faceBoundingBoxOnScreen = self.previewLayer.layerRectConverted(fromMetadataOutputRect: observedFace.boundingBox) as CGRect
+            let faceBoundingBoxPath = CGPath(rect: faceBoundingBoxOnScreen, transform: nil)
+            let faceBoundingBoxShape = CAShapeLayer()
+            faceBoundingBoxShape.path = faceBoundingBoxPath
+            faceBoundingBoxShape.fillColor = UIColor.clear.cgColor
+            faceBoundingBoxShape.strokeColor = UIColor.clear.cgColor
+            var newDrawings = [CAShapeLayer]()
+            newDrawings.append(faceBoundingBoxShape)
+            return newDrawings
+        })
+        facesBoundingBoxes.forEach({ faceBoundingBox in self.captureView.layer.addSublayer(faceBoundingBox) })
+        self.drawings = facesBoundingBoxes
+        self.configureCapture(for: observedFaces)
+    }
+    
+    private func clearDrawings() {
+        self.drawings.forEach({ drawing in drawing.removeFromSuperlayer() })
+    }
 }
 
 @available(iOS 11.0, *)
@@ -228,9 +228,17 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
         
         let observedFace = observedFaces.compactMap({$0}).first
         if let firstFace = observedFace {
-            if firstFace.confidence > 0.5 {
-                shouldEnableCapture = true
-                self.boundingBox = firstFace.boundingBox
+            
+            if #available(iOS 12.0, *) {
+                if firstFace.yaw == 0 {
+                    shouldEnableCapture = true
+                }
+            } else {
+                // Fallback on earlier versions
+                if firstFace.confidence > 0.5 {
+                    shouldEnableCapture = true
+                    self.boundingBox = firstFace.boundingBox
+                }
             }
         }
         
@@ -242,34 +250,34 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
         }
     }
     
-//    func cropImage(with image: UIImage, and rect: CGRect) {
-//
-//        var personImage = CIImage(image: image)
-//
-//        //let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyLow]
-//        //let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
-//        // This will just take the first detected face but you can do something more sophisticated
-////        guard let face = faceDetector?.features(in: personImage).first as? CIFaceFeature else { return }
-//
-//        // Make the facial rect a square so it will mask nicely to a circle (may not be strictly necessary as `CIFaceFeature` bounds is typically a square)
-//        var aRect = rect
-//        aRect.size.height = max(rect.height, rect.width)
-//        aRect.size.width = max(rect.height, rect.width)
-//        aRect = rect.insetBy(dx: -30, dy: -30) // Adds padding around the face so it's not so tightly cropped
-//
-//        // Crop to the face detected
-//        guard let aPersonImage = personImage else {
-//            return
-//        }
-//        personImage = aPersonImage.cropped(to: aRect)
-//
-//        // Set the new cropped image as the image view image
-//        guard let personCIImage = personImage else {
-//            return
-//        }
-//
-//        let croppedImage = UIImage(ciImage: personCIImage)
-//        // Save our captured image to photos album
-//        UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil)
-//    }
+    //    func cropImage(with image: UIImage, and rect: CGRect) {
+    //
+    //        var personImage = CIImage(image: image)
+    //
+    //        //let accuracy = [CIDetectorAccuracy: CIDetectorAccuracyLow]
+    //        //let faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
+    //        // This will just take the first detected face but you can do something more sophisticated
+    ////        guard let face = faceDetector?.features(in: personImage).first as? CIFaceFeature else { return }
+    //
+    //        // Make the facial rect a square so it will mask nicely to a circle (may not be strictly necessary as `CIFaceFeature` bounds is typically a square)
+    //        var aRect = rect
+    //        aRect.size.height = max(rect.height, rect.width)
+    //        aRect.size.width = max(rect.height, rect.width)
+    //        aRect = rect.insetBy(dx: -30, dy: -30) // Adds padding around the face so it's not so tightly cropped
+    //
+    //        // Crop to the face detected
+    //        guard let aPersonImage = personImage else {
+    //            return
+    //        }
+    //        personImage = aPersonImage.cropped(to: aRect)
+    //
+    //        // Set the new cropped image as the image view image
+    //        guard let personCIImage = personImage else {
+    //            return
+    //        }
+    //
+    //        let croppedImage = UIImage(ciImage: personCIImage)
+    //        // Save our captured image to photos album
+    //        UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil)
+    //    }
 }
