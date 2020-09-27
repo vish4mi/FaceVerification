@@ -232,6 +232,7 @@ extension FCVRCaptureViewController: AVCapturePhotoCaptureDelegate {
             if #available(iOS 12.0, *) {
                 if firstFace.yaw == 0 {
                     shouldEnableCapture = true
+                    self.boundingBox = firstFace.boundingBox
                 }
             } else {
                 // Fallback on earlier versions
